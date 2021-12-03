@@ -1,0 +1,58 @@
+<div class="container">
+  <ng-container *ngIf="this.wycieczka else loader">
+  <ngb-carousel *ngIf="this.wycieczka.galeria?.length" class="mt-1">
+    <ng-template ngbSlide *ngFor = "let zdjecie of wycieczka.galeria">
+      <div class="picsum-img-wrapper">
+        <img src="{{zdjecie}}" alt="zdjecie">
+      </div>
+      <div class="carousel-caption">
+        <h3>{{wycieczka.nazwa}}</h3>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <div>
+    <h2 class="display-2 d-inline-block">{{wycieczka.nazwa}}</h2>
+    <h4 class="display-4 d-inline-block ml-3">({{wycieczka.docelowyKraj}})</h4>
+  </div>
+  <b>{{this.dataRozpoczecia}}-{{this.dataZakonczenia}}</b>
+  <h5 class="lead">{{wycieczka.opis}}</h5>
+
+  <hr />
+  <div>
+    <h4 class="d-inline-block"> Wolne miejsca: </h4>
+    <h4 class="d-inline-block float-right" *ngIf="(wycieczka.maxMiejsc - wycieczka.rezerwowane); else noPlaces">
+      {{wycieczka.maxMiejsc - wycieczka.rezerwowane}}
+    </h4>
+    <ng-template #noPlaces>
+      <h4 class="d-inline-block float-right">Brak miejsc</h4>
+    </ng-template>
+  </div>
+  <hr />
+    <ng-container *ngIf="wycieczka.oceny.length">
+  <h4 class="d-inline-block"> Oceny: </h4>
+  <ul class="list-group list-group-flush" >
+    <li *ngFor="let comment of wycieczka.oceny" class="list-group-item">
+      <div>
+        <div>Ocena:
+          <ngb-rating *ngIf="comment.gwiazdki; else notApplicable" [max]="5" [(rate)]="comment.gwiazdki" [readonly]="true"></ngb-rating>
+          <ng-template #notApplicable>N/A</ng-template>
+        </div>
+        <div>Komentarz: <i>"{{comment.komentarz}}"</i></div>
+      </div>
+    </li>
+  </ul>
+  </ng-container>
+  <app-rate-wycieczka
+    *ngIf="wycieczka.rezerwowane"
+    [btnClass]="'d-block w-100 my-2'"
+    [wycieczkaId]="wycieczka._id"
+    [nazwa]="wycieczka.nazwa"
+    (rateWycieczka)="this.onRateWycieczka($event)"
+  ></app-rate-wycieczka>
+  </ng-container>
+  <ng-template #loader>
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </ng-template>
+</div>

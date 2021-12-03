@@ -1,0 +1,36 @@
+<nav id="main-nav" class="navbar sticky-top navbar-light navbar-expand-md border-bottom shadow-sm opaque">
+  <a routerLink="/">
+    <img src='assets/img/travail.png' class="travail-logo"  alt="travail-logo"/>
+  </a>
+
+  <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse"
+          data-target="#navbar-collapse">
+    <span class="navbar-toggler-icon"> </span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Wycieczki</a>
+      </li>
+      <ng-container *ngIf="!this.zalogowany">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">Rejestracja</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Logowanie</a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="this.isAdmin">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin">Panel Administratora</a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="this.zalogowany">
+        <li class="nav-item">
+          <button class="btn btn-primary" (click)="this.logout()">Wyloguj<i class="fas fa-sign-out-alt"></i></button>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</nav>

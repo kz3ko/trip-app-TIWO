@@ -1,0 +1,20 @@
+<form [formGroup]="this.form" novalidate>
+    <div formArrayName="formArray">
+        <div *ngFor="let control of this.formArray.controls; let i = index; let last = last; let first = first;">
+            <label class="form-container">
+                #{{i}}
+                <input type="text" class="form-control" [formControlName]="i" (ngModelChange)="this.change()"/>
+            </label>
+            <ng-container *ngIf="!first">
+                <button type="button" class="btn btn-sm btn-danger btn-round ml-2" (click)="delInput(i)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </ng-container>
+            <ng-container *ngIf="last">
+                <button type="button" class="btn btn-sm btn-success btn-round ml-2" (click)="addInput()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </ng-container>
+        </div>
+    </div>
+</form>

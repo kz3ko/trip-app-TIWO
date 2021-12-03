@@ -1,0 +1,161 @@
+{
+  "wycieczki": [
+    {
+      "id": 1,
+      "nazwa": "Asia Thai Tour",
+      "docelowyKraj": "Tajlandia",
+      "dataRozpoczecia": "2021-04-25T22:00:00.000Z",
+      "dataZakonczenia": "2021-05-25T22:00:00.000Z",
+      "cena": 25000,
+      "maxMiejsc": 12,
+      "opis": "Ta wycieczka jest bardzo długa i pozwala na zobaczenie największych cudów Tajlandii - kulturowego serca Azji",
+      "zdjecie": "https://media.istockphoto.com/photos/beaty-limestone-rock-picture-id467599830?k=6&m=467599830&s=612x612&w=0&h=JIOaYr0v9vstUuxKSpQez6ZYAVZAMJkehmdTvUkTtAY=",
+      "rezerwowane": 2,
+      "oceny": [],
+      "galeria": [
+        "944",
+        "1011",
+        "984"
+      ]
+    },
+    {
+      "id": 2,
+      "nazwa": "Arctica Explorer",
+      "docelowyKraj": "Grenlandia",
+      "dataRozpoczecia": "2022-01-05T23:00:00.000Z",
+      "dataZakonczenia": "2022-02-11T23:00:00.000Z",
+      "cena": 12000,
+      "maxMiejsc": 5,
+      "opis": "Weź swoje najcieplejsze ubrania, bo może być zimno! Z nami będziesz ekspolorował wybrzeża arktyki, obejrzysz pingwiny i niedźwiedzie polarne",
+      "zdjecie": "https://expertvagabond.com/wp-content/uploads/antarctica-ice-arch.jpg",
+      "rezerwowane": 1,
+      "oceny": [],
+      "galeria": [
+        "944",
+        "1011",
+        "984"
+      ]
+    },
+    {
+      "id": 3,
+      "nazwa": "Bavarian Wunderland",
+      "docelowyKraj": "Niemcy",
+      "dataRozpoczecia": "2021-05-14T22:00:00.000Z",
+      "dataZakonczenia": "2021-05-31T22:00:00.000Z",
+      "cena": 7000,
+      "maxMiejsc": 17,
+      "opis": "Zwiedź miejsce, gdzie odbywa się największy na świecie festiwal piwa - Oktoberfest, odwiedź inspirację dla zamku Disneya i poznaj kulturę Bawarczyków",
+      "zdjecie": "https://storage.googleapis.com/karmagroup-d66ca.appspot.com/karmagroupblogcdn/2018/08/Neuschwanstein-Castle-karma-group-bavaria.jpg",
+      "rezerwowane": 4,
+      "oceny": [],
+      "galeria": [
+        "944",
+        "1011",
+        "984"
+      ]
+    },
+    {
+      "id": 4,
+      "nazwa": "Syrup Ski",
+      "docelowyKraj": "Kanada",
+      "dataRozpoczecia": "2021-03-10T23:00:00.000Z",
+      "dataZakonczenia": "2021-03-27T23:00:00.000Z",
+      "cena": 15000,
+      "maxMiejsc": 11,
+      "opis": "Wyjazd na śnieżne stoki koło Vancouver, miejsca gdzie odbywały się igrzyska (kiedyś tam). Dużo śnieżnej zabawy i eksploracji tradycji Kanadyjskich",
+      "zdjecie": "https://www.canada.ca/content/canadasite/en/immigration-refugees-citizenship/services/visit-canada/_jcr_content/par/mwscolumns-row1/colpar-2/adaptiveimage/image.img.jpg/1511270829049.jpg",
+      "rezerwowane": 8,
+      "oceny": [],
+      "galeria": [
+        "944",
+        "1011",
+        "984"
+      ]
+    },
+    {
+      "id": 5,
+      "nazwa": "Kielbasa Tourasa",
+      "docelowyKraj": "Polska",
+      "dataRozpoczecia": "2021-07-11T22:00:00.000Z",
+      "dataZakonczenia": "2021-07-28T22:00:00.000Z",
+      "cena": 2500,
+      "maxMiejsc": 14,
+      "opis": "Poznaj polskie tradycje, piękne zabudowania poniemieckie, różne zaściankowe zwyczaje i bardzo osobliwą społeczność Polski. Kiełbasa nie wliczona w koszty wycieczki",
+      "zdjecie": "https://www.polska.travel/images/pl-PL/glowne-miasta/krakow/krakow_rynek_2_1170.jpg",
+      "rezerwowane": 1,
+      "oceny": [],
+      "galeria": [
+        "944",
+        "1011",
+        "984"
+      ]
+    },
+    {
+      "id": 6,
+      "nazwa": "Catalona Colors",
+      "docelowyKraj": "Hiszpania",
+      "dataRozpoczecia": "2021-08-15T22:00:00.000Z",
+      "dataZakonczenia": "2021-08-29T22:00:00.000Z",
+      "cena": 9000,
+      "maxMiejsc": 8,
+      "opis": "Najważniejsze miejsca Katalonii, bajkowa Barcelona w pigułce oraz wejście do Sagrada Familia, malownicze miasto Salvadora Dalí ",
+      "zdjecie": "https://i.content4travel.com/cms/img/u/desktop/se/bcnbarw_0.jpg?version=2.5.375",
+      "rezerwowane": 0,
+      "oceny": [],
+      "galeria": [
+        "944",
+        "1011",
+        "984"
+      ]
+    },
+    {
+      "id": 7,
+      "nazwa": "Greckie Chalkidiki",
+      "docelowyKraj": "Grejca",
+      "dataRozpoczecia": "2021-10-11T22:00:00.000Z",
+      "dataZakonczenia": "2021-10-21T22:00:00.000Z",
+      "cena": 7000,
+      "maxMiejsc": 2,
+      "opis": "Piękne, piaszczyste plaże na półwyspie Kassandra, krystalicznie czyste morze i pachnące lasy piniowe , Saloniki pełne wspaniałych zabytków , Athos – tajemnicza republika mnichów",
+      "zdjecie": "https://www.itaka.pl/imgthumb/destination/chalkidiki.jpg",
+      "rezerwowane": 0,
+      "oceny": [],
+      "galeria": [
+        "944",
+        "1011",
+        "984"
+      ]
+    },
+    {
+      "id": 8,
+      "nazwa": "Durres Albania",
+      "docelowyKraj": "Albania",
+      "dataRozpoczecia": "2021-08-24T22:00:00.000Z",
+      "dataZakonczenia": "2021-09-07T22:00:00.000Z",
+      "cena": 5000,
+      "maxMiejsc": 5,
+      "opis": "Tętniące życiem miasto nad Adriatykiem, szerokie plaże ciągnące się kilometrami, świetne warunki do uprawiania windsurfingu, restauracje, sklepy z pamiątkami i fabryka brandy, największy starożytny amfiteatr na Bałkanach",
+      "zdjecie": "https://www.itaka.pl/imgthumb/destination/durres.jpg",
+      "rezerwowane": 0,
+      "oceny": [],
+      "galeria": [
+        "944",
+        "1011",
+        "984"
+      ]
+    }
+  ],
+  "uprawnienia": [
+    {
+      "email": "tomekgsd+tst@gmail.com",
+      "accessLevel": "admin"
+    }
+  ],
+  "rezerwacje": [
+    {
+      "email": "tomekgsd+tst@gmail.com",
+      "id": 1,
+      "miejsca": 3
+    }
+  ]
+}

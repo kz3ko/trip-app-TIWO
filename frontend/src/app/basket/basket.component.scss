@@ -1,0 +1,43 @@
+.btn-round {
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.btn-floating {
+  position: fixed;
+  bottom: 7rem;
+  right: 3rem;
+  z-index: 1022;
+}
+
+.basket-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1021;
+  overflow: scroll;
+}
+
+.basket-content {
+  height: 100vh;
+  width: 65vw;
+  background-color: white;
+  opacity: 1;
+  overflow: scroll;
+}
+
+.basket-entry:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.basket-summary {
+  border-top: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.discounted {
+  text-decoration: line-through;
+}

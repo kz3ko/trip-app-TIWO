@@ -1,0 +1,30 @@
+<div>
+  <ng-container *ngIf="this.isFetching">
+    <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-container>
+  <ul class="list-group">
+    <li
+      *ngFor="let wycieczka of displayedWycieczki" class="d-flex list-group-item flex-row px-3 py-3"
+      [ngClass]="{
+      'list-group-item-success': this.isCheapest(wycieczka),
+      'list-group-item-danger': this.isMostExpensive(wycieczka)}"
+    >
+       <app-wycieczka
+         class="container-fluid"
+         [wycieczka]="wycieczka"
+         [canRateObservable]="this.canRate(wycieczka)"
+         [canRateBoolean]="this.canRateNow(wycieczka)"
+         [isRegistered]="this.loggedIn"
+         (removePlace)="this.handleRemovePlace($event)"
+         (bookPlace)="this.handleBookPlace($event)"
+         (removeWycieczka)="this.handleRemoveWycieczka($event)"
+         (rateWycieczka)="this.handleRateWycieczka(wycieczka, $event)"
+       ></app-wycieczka>
+    </li>
+  </ul>
+
+</div>

@@ -1,0 +1,43 @@
+<ul class="list-group filter-list">
+  <li class="list-group-item px-3 bg-gray"
+      [ngClass]="{'border-green': this.filtersEnabled.search}"
+  >
+    <app-text-search (searchChange)="this.onSearchChange($event)"></app-text-search>
+  </li>
+  <li class="list-group-item px-3 bg-gray"
+    [ngClass]="{'border-green': this.filtersEnabled.dateRange}"
+  >
+      <div class="form-check float-right">
+        <label for="enableDate"></label>
+        <input type="checkbox" class="form-check-input" id="enableDate"
+               [checked]="this.filtersEnabled.dateRange"
+               (change)="this.flipFilter('dateRange')"
+        >
+      </div>
+      <app-date-range-filter (datesChanged)="this.onDateRangeChange($event)"></app-date-range-filter>
+  </li>
+  <li class="list-group-item px-3 bg-gray">
+    <div class="form-check float-right">
+      <label for="enablePriceRange"></label>
+      <input type="checkbox" class="form-check-input" id="enablePriceRange"
+             [checked]="this.filtersEnabled.priceRange"
+             (change)="this.flipFilter('priceRange')"
+      >
+    </div>
+    <app-price-range [ceil]="this.maxWycieczkaValue" (rangeChange)="this.onPriceRangeChange($event)"></app-price-range>
+  </li>
+  <li class="list-group-item px-3 bg-gray">
+    <div class="form-check float-right">
+      <label for="reviewThreshold"></label>
+      <input type="checkbox" class="form-check-input" id="reviewThreshold"
+             [checked]="this.filtersEnabled.reviewThreshold"
+             (change)="this.flipFilter('reviewThreshold')"
+      >
+    </div>
+    <app-review-threshold (reviewRatingChange)="this.onReviewThresholdChange($event)"></app-review-threshold>
+  </li>
+
+  <li class="list-group-item px-3 bg-gray">
+    <app-region-select (selectRegions)="this.onRegionsChange($event)" [availableRegions]="this.availableRegions()"></app-region-select>
+  </li>
+</ul>

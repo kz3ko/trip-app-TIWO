@@ -1,0 +1,113 @@
+<div >
+  <div class="row mb-3">
+    <div class="col-md-3 text-align-center">
+      <a routerLink="/wycieczki/{{wycieczka._id}}">
+        <img src="{{wycieczka.zdjecie}}" width="150px" height="100px" alt="Obraz {{wycieczka.nazwa}}}"
+           class="rounded-circle"/>
+      </a>
+    </div>
+    <div class="col-md-7">
+      <h3 class="d-inline-block">{{wycieczka.nazwa }}</h3>
+
+      <div *ngIf="wycieczka.maxMiejsc - wycieczka.rezerwowane === 0; then noPlaces; else freePlaces"></div>
+      <ng-template #freePlaces>
+        <small class="ml-2"
+               [ngClass]="{
+                 'text-muted': (wycieczka.maxMiejsc - wycieczka.rezerwowane > 3),
+                 'text-danger': (wycieczka.maxMiejsc - wycieczka.rezerwowane <= 3)
+                 }"
+               *ngIf="!wycieczka.deleted"
+        >
+          ({{wycieczka.maxMiejsc - wycieczka.rezerwowane}} miejsc)
+        </small>
+        <small class="text-danger" *ngIf="wycieczka.deleted"
+        >
+          USUNIĘTO
+        </small>
+      </ng-template>
+      <ng-template #noPlaces>
+        <small class="ml-2 text-danger font-weight-bold">
+          Brak wolnych miejsc
+        </small>
+      </ng-template>
+      <ng-container *ngIf="!this.isAdminView && this.isRegistered">
+      <div class="d-inline-block" style="vertical-align: top; float: right">
+        <div class="d-flex flex-column align-items-start ">
+          <div style="flex-basis: 100%">
+
+          <span class="badge badge-dark" style="min-width: 90px" *ngIf="this.rezerwacjaForThisWycieczka">
+              Posiadasz {{this.rezerwacjaForThisWycieczka?.miejsca}} rezerwacji
+          </span>
+            <span class="badge badge-dark" style="min-width: 90px" *ngIf="!this.rezerwacjaForThisWycieczka">
+            Nie posiadasz rezerwacji
+          </span>
+          </div>
+          <div class="mx-auto mt-1" *ngIf="!this.isAdminView">
+            <button type="button" class="btn btn-sm btn-success btn-round"
+                    (click)="this.addOne(wycieczka)"
+                    [disabled]="(wycieczka.maxMiejsc === wycieczka.rezerwowane )"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+            <button type="button"
+                    class="btn btn-sm btn-danger ml-1 btn-round"
+                    (click)="this.removeOne(wycieczka)"
+                    [disabled]="(!rezerwacjaForThisWycieczka || !rezerwacjaForThisWycieczka.miejsca)"
+            >
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      </ng-container>
+      <h6>{{wycieczka.docelowyKraj | uppercase }}</h6>
+
+      <div class="d-flex flex-column" style="max-width: 150px">
+      <span class="badge badge-pill badge-secondary">
+          <span [ngClass]="{'overridedPrice': this.activeFlashDeal}">
+            {{wycieczka.cena}} PLN
+          </span>
+      </span>
+
+      <ng-container *ngIf="this.activeFlashDeal">
+        <span class="text-danger">LAST MINUTE</span>
+        <span class="badge badge-pill badge-danger">
+            <span>
+              {{wycieczka.cena - this.activeFlashDeal.discount}} PLN
+            </span>
+        </span>
+      </ng-container>
+      </div>
+
+      <button *ngIf="this.isAdminView" type="button" class="btn btn-sm btn-danger ml-1 btn-rounded" (click)="this.removeSelf()">Usuń wycieczkę</button>
+
+      <ng-container *ngIf="this.canRateBoolean && !this.isAdminView">
+        <app-rate-wycieczka
+          [wycieczkaId]="wycieczka._id"
+          [nazwa]="wycieczka.nazwa"
+          (rateWycieczka)="this.onRateWycieczka($event)"
+        ></app-rate-wycieczka>
+      </ng-container>
+
+      <ng-container *ngIf="this.isAdminView">
+        <app-modify-wycieczka
+          [wycieczka]="wycieczka"
+        ></app-modify-wycieczka>
+      </ng-container>
+
+      <button type="button" class="btn btn-sm btn-dark ml-1 btn-rounded"
+              (click)="this.toggleComments()"
+              [ngClass]="{'invisible': this.wycieczka.oceny.length === 0}"
+      >
+        <i class="fas fa-star"></i>
+        {{commentsVisible ? 'Ukryj' : 'Pokaż'}} oceny
+      </button>
+    </div>
+  </div>
+  <div class="pl-2">
+    <div>
+      <p>{{wycieczka.opis}}</p>
+    </div>
+  </div>
+  <app-wycieczka-comments [isVisible]="commentsVisible" [comments]="wycieczka.oceny"></app-wycieczka-comments>
+</div>

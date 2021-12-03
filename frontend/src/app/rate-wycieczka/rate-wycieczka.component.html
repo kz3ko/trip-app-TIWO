@@ -1,0 +1,34 @@
+<button class="btn btn-sm btn-primary ml-1 btn-rounded {{btnClass}}" (click)="open(content)">Oceń wycieczkę</button>
+<ng-template #content let-d="dismiss">
+  <div class="text-dark">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Oceń {{nazwa}}!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="komentarzWycieczka{{wycieczkaId}}">Komentarz</label>
+        <textarea rows="4" id="komentarzWycieczka{{wycieczkaId}}" class="form-control" (change)="this.handleValueChange()" [(ngModel)]="komentarz"></textarea>
+      </div>
+      <div class="form-group">
+        <ngb-rating [max]="5" [(rate)]="gwiazdki" [readonly]="false" (change)="this.handleValueChange()"></ngb-rating>
+        <p><small>Wystaw ocenę!</small></p>
+      </div>
+      <p class="text-danger" [ngClass]="{'invisible': !error}">Recenzja musi mieć ocenę, lub komentarz</p>
+    </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="d()">
+        Anuluj
+      </button>
+      <button type="button" class="btn btn-primary" (click)="this.submitWycieczkaRate()">Oceń</button>
+    </div>
+</ng-template>
+
+
+
+
+

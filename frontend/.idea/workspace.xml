@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ab0debde-b4d8-4e55-9698-7d11ea9fa029" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1lfJiCmrBKFkDGmQffrKpeXSQaP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$/node_modules/protractor" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration name="Tests (WycieczkiApp)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/karma.conf.js" />
+      <karma-package-dir value="$PROJECT_DIR$/node_modules/@angular/cli" />
+      <working-directory value="$PROJECT_DIR$" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="E2E Tests (WycieczkiApp)" type="JavaScriptTestRunnerProtractor">
+      <config-file value="$PROJECT_DIR$/e2e/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-package value="$PROJECT_DIR$/node_modules/protractor" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="install" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="install" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Angular Application" />
+      <item itemvalue="Karma.Tests (WycieczkiApp)" />
+      <item itemvalue="npm.install" />
+      <item itemvalue="npm.Angular CLI Server" />
+      <item itemvalue="Protractor.E2E Tests (WycieczkiApp)" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab0debde-b4d8-4e55-9698-7d11ea9fa029" name="Default Changelist" comment="" />
+      <created>1607982336683</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607982336683</updated>
+      <workItem from="1607982338496" duration="10477000" />
+      <workItem from="1608057712204" duration="22531000" />
+      <workItem from="1608144566179" duration="21598000" />
+      <workItem from="1608196032295" duration="39000" />
+      <workItem from="1608224351382" duration="14793000" />
+      <workItem from="1608247027241" duration="3219000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/src/polyfills.js" />
+        <option value="$PROJECT_DIR$/src/test.js" />
+        <option value="$PROJECT_DIR$/e2e/src/app.e2e-spec.js" />
+        <option value="$PROJECT_DIR$/e2e/src/app.po.js" />
+        <option value="$PROJECT_DIR$/src/app/auth-guard.service.js" />
+        <option value="$PROJECT_DIR$/src/app/in-memory-wycieczki.service.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczki.service.js" />
+        <option value="$PROJECT_DIR$/src/app/auth-service.service.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczki.service.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/auth-service.service.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/filters-provider.service.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/decimal-only.directive.js" />
+        <option value="$PROJECT_DIR$/src/app/admin.guard.js" />
+        <option value="$PROJECT_DIR$/src/app/app.module.js" />
+        <option value="$PROJECT_DIR$/src/app/auth-guard.guard.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/decimal-only.directive.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/app-routing.module.js" />
+        <option value="$PROJECT_DIR$/src/app/http-inerceptor.js" />
+        <option value="$PROJECT_DIR$/src/app/admin.guard.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/in-memory-wycieczki.service.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/filters-provider.service.js" />
+        <option value="$PROJECT_DIR$/src/environments/environment.prod.js" />
+        <option value="$PROJECT_DIR$/src/environments/environment.js" />
+        <option value="$PROJECT_DIR$/src/app/nav/nav.component.js" />
+        <option value="$PROJECT_DIR$/src/app/nav/nav.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/model/wycieczkiSchema.js" />
+        <option value="$PROJECT_DIR$/src/app/basket/basket.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/basket/basket.component.js" />
+        <option value="$PROJECT_DIR$/src/app/app-root/app-root.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/app-root/app-root.component.js" />
+        <option value="$PROJECT_DIR$/src/app/naglowek/naglowek.component.js" />
+        <option value="$PROJECT_DIR$/src/app/naglowek/naglowek.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczka/wycieczka.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczka/wycieczka.component.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczki/wycieczki.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczki/wycieczki.component.js" />
+        <option value="$PROJECT_DIR$/src/app/admin-panel/admin-panel.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/admin-panel/admin-panel.component.js" />
+        <option value="$PROJECT_DIR$/src/app/filter-list/filter-list.component.js" />
+        <option value="$PROJECT_DIR$/src/app/filter-list/filter-list.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/multi-adder/multi-adder.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/multi-adder/multi-adder.component.js" />
+        <option value="$PROJECT_DIR$/src/app/price-range/price-range.component.js" />
+        <option value="$PROJECT_DIR$/src/app/price-range/price-range.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/text-search/text-search.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/text-search/text-search.component.js" />
+        <option value="$PROJECT_DIR$/src/app/login-screen/login-screen.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/login-screen/login-screen.component.js" />
+        <option value="$PROJECT_DIR$/src/app/add-wycieczka/add-wycieczka.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/add-wycieczka/add-wycieczka.component.js" />
+        <option value="$PROJECT_DIR$/src/app/region-select/region-select.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/region-select/region-select.component.js" />
+        <option value="$PROJECT_DIR$/src/app/add-flash-deal/add-flash-deal.component.js" />
+        <option value="$PROJECT_DIR$/src/app/add-flash-deal/add-flash-deal.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/landing-screen/landing-screen.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/landing-screen/landing-screen.component.js" />
+        <option value="$PROJECT_DIR$/src/app/rate-wycieczka/rate-wycieczka.component.js" />
+        <option value="$PROJECT_DIR$/src/app/rate-wycieczka/rate-wycieczka.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/checkout-screen/checkout-screen.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/checkout-screen/checkout-screen.component.js" />
+        <option value="$PROJECT_DIR$/src/app/register-screen/register-screen.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/register-screen/register-screen.component.js" />
+        <option value="$PROJECT_DIR$/src/app/modify-wycieczka/modify-wycieczka.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/modify-wycieczka/modify-wycieczka.component.js" />
+        <option value="$PROJECT_DIR$/src/app/review-threshold/review-threshold.component.js" />
+        <option value="$PROJECT_DIR$/src/app/review-threshold/review-threshold.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/date-range-filter/date-range-filter.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/date-range-filter/date-range-filter.component.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczka-comments/wycieczka-comments.component.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczka-comments/wycieczka-comments.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/reservations-screen/reservations-screen.component.js" />
+        <option value="$PROJECT_DIR$/src/app/reservations-screen/reservations-screen.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczka-details-screen/wycieczka-details-screen.component.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/wycieczka-details-screen/wycieczka-details-screen.component.js" />
+      </list>
+    </option>
+  </component>
+</project>

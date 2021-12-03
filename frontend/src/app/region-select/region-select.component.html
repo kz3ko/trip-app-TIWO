@@ -1,0 +1,6 @@
+<div class="form-check" *ngFor="let region of this.regions">
+  <input class="form-check-input" type="checkbox" id="{{region}}cb" [(ngModel)]="this.checkboxesValues[region]" (ngModelChange)="this.checkboxChange()">
+  <label class="form-check-label" for="{{region}}cb">
+    {{region}}
+  </label>
+</div>

@@ -1,0 +1,20 @@
+li {
+  background-clip: border-box;
+  border: 2px #818181 solid;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+}
+
+.bg-gray {
+ background-color: lightgray;
+}
+.border-green{
+  border: 2px #119911 solid;
+  border-top-width: 1px;
+}
+
+.filter-list {
+  min-width: 256px;
+  position: sticky;
+  top: 73px;
+}

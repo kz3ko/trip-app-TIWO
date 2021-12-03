@@ -1,0 +1,117 @@
+<button class="btn btn-outline-dark ml-3" (click)="open(content)">Modyfikuj<i class="fas fa-wrench"></i></button>
+<ng-template #content let-d="dismiss">
+  <div class="text-dark">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edytuj wycieczkę</h4>
+      <button type="button" class="close" aria-label="Close" (click)="this.modalClose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form novalidate [formGroup]="this.form">
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group col-md-6 col-sm-12">
+            <label for="nazwa">Nazwa</label>
+            <input type="text" id="nazwa" class="form-control"
+                   formControlName="nazwa"
+                   [ngClass]="{'is-invalid': nazwa.errors?.required && (nazwa.touched || nazwa.dirty)}"
+            />
+            <div class="invalid-feedback" *ngIf="nazwa.errors?.required && (nazwa.touched || nazwa.dirty)">
+              To pole jest wymagane
+            </div>
+          </div>
+
+          <div class="form-group col-md-6 col-sm-12">
+            <label for="docelowyKraj">Docelowy kraj</label>
+            <input type="text" id="docelowyKraj" class="form-control" formControlName="docelowyKraj"
+                   [ngClass]="{'is-invalid': docelowyKraj.errors?.required && (docelowyKraj.touched || docelowyKraj.dirty)}"
+            />
+            <div class="invalid-feedback" *ngIf="docelowyKraj.errors?.required && (docelowyKraj.touched || docelowyKraj.dirty)">
+              To pole jest wymagane
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4 col-sm-6">
+            <label for="dataRozpoczecia">Data rozpoczecia</label>
+            <input type="date" id="dataRozpoczecia" class="form-control" formControlName="dataRozpoczecia"
+                   [ngClass]="{'is-invalid': dataRozpoczecia.errors?.required && (dataRozpoczecia.touched || dataRozpoczecia.dirty)}"
+            />
+            <div class="invalid-feedback" *ngIf="dataRozpoczecia.errors?.required && (dataRozpoczecia.touched || dataRozpoczecia.dirty)">
+              To pole jest wymagane
+            </div>
+          </div>
+
+          <div class="form-group col-md-4 col-sm-6">
+            <label for="dataZakonczenia">Data zakończenia</label>
+            <input type="date" id="dataZakonczenia" class="form-control" formControlName="dataZakonczenia"
+                   [ngClass]="{'is-invalid': dataZakonczenia.errors?.required && (dataZakonczenia.touched || dataZakonczenia.dirty)}"
+            />
+            <div class="invalid-feedback" *ngIf="dataZakonczenia.errors?.required && (dataZakonczenia.touched || dataZakonczenia.dirty)">
+              To pole jest wymagane
+            </div>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="maxMiejsc">Maksimum miejsc</label>
+            <input type="number" step="1" min=0 id="maxMiejsc" class="form-control" formControlName="maxMiejsc"
+                   [ngClass]="{'is-invalid': maxMiejsc.errors?.required && (maxMiejsc.touched || maxMiejsc.dirty)}"
+                   appDecimalOnly
+            />
+            <div class="invalid-feedback" *ngIf="maxMiejsc.errors?.required && (maxMiejsc.touched || maxMiejsc.dirty)">
+              To pole jest wymagane
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-8 col-sm-12">
+            <label for="urlZdjecia">URL zdjęcia</label>
+            <input type="text" id="urlZdjecia" class="form-control" formControlName="zdjecie"
+                   [ngClass]="{'is-invalid': zdjecie.errors?.required && (zdjecie.touched || zdjecie.dirty)}"
+            />
+            <div class="invalid-feedback" *ngIf="zdjecie.errors?.required && (zdjecie.touched || zdjecie.dirty)">
+              To pole jest wymagane
+            </div>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="cena">Cena jednostkowa</label>
+            <input type="number" min=0 id="cena" class="form-control" formControlName="cena"
+                   [ngClass]="{'is-invalid': cena.errors?.required && (cena.touched || cena.dirty)}"
+                   appDecimalOnly decimals="2"
+            />
+            <div class="invalid-feedback" *ngIf="cena.errors?.required && (cena.touched || cena.dirty)">
+              To pole jest wymagane
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-12">
+            <label for="opisNowaWycieczka">Opis</label>
+            <textarea rows="4" id="opisNowaWycieczka" class="form-control" formControlName="opis"></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <h5>URL zdjęć do galerii</h5>
+          <div class="form-group col-12">
+            <app-multi-adder [inputArray]="this.gallery" (changeEvent)="this.handleNewGallery($event)"></app-multi-adder>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="this.modalClose()">
+          Anuluj
+        </button>
+        <button type="submit" class="btn btn-primary" (click)="this.modifyWycieczka()">Zapisz</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+
+
+
+

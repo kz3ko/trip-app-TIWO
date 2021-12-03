@@ -1,0 +1,23 @@
+<div>
+  <app-add-wycieczka></app-add-wycieczka>
+  <app-add-flash-deal (addFlashDeal)="this.handleNewFlashDeal($event)"></app-add-flash-deal>
+  <div>
+    <ul class="list-group">
+      <li
+        *ngFor="let wycieczka of this.allWycieczki" class="d-flex list-group-item flex-row px-3 py-3"
+      >
+        <app-wycieczka
+          class="container-fluid"
+          [wycieczka]="wycieczka"
+          [isAdminView]="true"
+          [canRateBoolean]="false"
+          (removeWycieczka)="this.handleRemoveWycieczka($event)"
+          (editWycieczka)="this.handleEditWycieczka($event)"
+        ></app-wycieczka>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
+

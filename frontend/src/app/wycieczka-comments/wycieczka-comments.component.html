@@ -1,0 +1,14 @@
+<div [(ngbCollapse)]="!isVisible" class="text-dark">
+  <hr class="mt-2 mb-3"/>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let comment of comments" class="list-group-item">
+        <div>
+          <div>Ocena:
+            <ngb-rating *ngIf="comment.gwiazdki; else notApplicable" [max]="5" [(rate)]="comment.gwiazdki" [readonly]="true"></ngb-rating>
+            <ng-template #notApplicable>N/A</ng-template>
+          </div>
+          <div>Komentarz: <i>"{{comment.komentarz}}"</i></div>
+        </div>
+    </li>
+  </ul>
+</div>

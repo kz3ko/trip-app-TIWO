@@ -1,0 +1,50 @@
+<button class="btn btn-success btn-round btn-floating" (click)="open(content)"><i class="fas fa-gift"></i></button>
+<ng-template #content let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Stwórz promocję</h4>
+            <button type="button" class="close" aria-label="Close" (click)="this.cancel()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+            <div class="modal-body">
+
+                <div class="form-row">
+                    <label>Wybierz wycieczkę</label>
+                    <ng-select [(ngModel)]="selectedWycieczkaId" class="w-100">
+                        <ng-option *ngFor="let wycieczka of availableWycieczkas" [value]="wycieczka._id">
+                            {{wycieczka.nazwa}}
+                        </ng-option>
+                    </ng-select>
+                </div>
+
+                <div class="form-row">
+                    <label for="startDate">Czas rozpoczęcia promocji</label>
+                    <input type="date" id="startDate" class="form-control" [(ngModel)]="startDate">
+                    <ngb-timepicker [(ngModel)]="startTime" [seconds]="true"></ngb-timepicker>
+                </div>
+
+                <div class="form-row">
+                    <label for="endDate">Czas zakończenia promocji</label>
+                    <input type="date" id="endDate" class="form-control" [(ngModel)]="endDate">
+                    <ngb-timepicker [(ngModel)]="endTime" [seconds]="true"></ngb-timepicker>
+                </div>
+
+                <div class="form-row">
+                    <label for="discount">Zniżka (PLN)</label>
+                    <input type="number" step="1" min=0 id="discount" class="form-control" [(ngModel)]="discount"
+                           appDecimalOnly
+                    />
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="this.cancel()">
+                    Anuluj
+                </button>
+                <button type="submit" class="btn btn-primary" (click)="this.submitForm()">Aktywuj</button>
+            </div>
+            </div>
+</ng-template>
+
+
+
+
+
