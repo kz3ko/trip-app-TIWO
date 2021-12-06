@@ -13,7 +13,9 @@ export interface Credentials {
 
 export type AccessLevel = 'admin' | 'regular';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   private loggedInSource = new Subject<boolean>(); // Logged in subject
 

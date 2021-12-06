@@ -11,7 +11,9 @@ import { environment } from '../environments/environment';
 
 type BookingResponse = { trip: Wycieczka, reservation: Rezerwacja };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class WycieczkiService {
   // Reservations
   public rezerwacje: Rezerwacja[] = [];

@@ -1,3 +1,4 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
 import { WycieczkiService } from './wycieczki.service';
@@ -6,7 +7,9 @@ describe('WycieczkiServiceService', () => {
   let service: WycieczkiService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [HttpClient, HttpHandler]
+    });
     service = TestBed.inject(WycieczkiService);
   });
 
@@ -14,3 +17,4 @@ describe('WycieczkiServiceService', () => {
     expect(service).toBeTruthy();
   });
 });
+
