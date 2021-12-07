@@ -8,6 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { Router } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -88,7 +91,9 @@ import { AddFlashDealComponent } from './add-flash-deal/add-flash-deal.component
     NgbCarouselModule,
     HttpClientModule,
     NgbTimepickerModule,
-    NgSelectModule,
+    NgSelectModule, 
+    HttpClientTestingModule,
+    RouterTestingModule
     // InMemoryWebApiModule.forRoot(InMemoryWycieczkiService, {delay : 2000}),
   ],
   providers: [FiltersProviderService, WycieczkiService, AuthService, {

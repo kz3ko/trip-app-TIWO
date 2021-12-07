@@ -1,4 +1,4 @@
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { WycieczkiService } from './wycieczki.service';
@@ -7,9 +7,7 @@ describe('WycieczkiServiceService', () => {
   let service: WycieczkiService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [HttpClient, HttpHandler]
-    });
+    TestBed.configureTestingModule({imports: [ HttpClientTestingModule ]});
     service = TestBed.inject(WycieczkiService);
   });
 

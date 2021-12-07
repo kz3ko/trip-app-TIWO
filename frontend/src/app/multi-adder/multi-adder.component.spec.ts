@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MultiAdderComponent } from './multi-adder.component';
 
@@ -8,7 +9,8 @@ describe('MultiAdderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MultiAdderComponent ]
+      declarations: [ MultiAdderComponent ], 
+      imports: [ FormsModule, ReactiveFormsModule ]
     })
     .compileComponents();
   });

@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddWycieczkaComponent } from './add-wycieczka.component';
@@ -8,7 +9,8 @@ describe('AddWycieczkaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddWycieczkaComponent ]
+      declarations: [ AddWycieczkaComponent ],
+      imports: [ HttpClientTestingModule ],
     })
     .compileComponents();
   });

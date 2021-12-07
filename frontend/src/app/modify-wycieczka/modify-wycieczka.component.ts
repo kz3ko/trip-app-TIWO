@@ -31,6 +31,9 @@ export class ModifyWycieczkaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.wycieczka) {
+      return;
+    }
     const {
       nazwa, docelowyKraj, dataRozpoczecia, dataZakonczenia, cena, maxMiejsc, opis, zdjecie, galeria,
     } = this.wycieczka;

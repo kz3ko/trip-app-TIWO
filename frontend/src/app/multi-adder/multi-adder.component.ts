@@ -32,10 +32,12 @@ export class MultiAdderComponent implements OnInit {
       ]),
     });
     const arrayControl = newForm.controls.formArray as FormArray;
-    this.inputArray.forEach((inputValue) => {
-      const newGroup = this.fb.control(inputValue, [Validators.required, Validators.maxLength(128)]);
-      arrayControl.push(newGroup);
-    });
+    if (this.inputArray) {
+      this.inputArray.forEach((inputValue) => {
+        const newGroup = this.fb.control(inputValue, [Validators.required, Validators.maxLength(128)]);
+        arrayControl.push(newGroup);
+      });
+    }
 
     if (!arrayControl.length) {
       const newGroup = this.fb.control('', [Validators.required, Validators.maxLength(128)]);
