@@ -91,9 +91,7 @@ import { AddFlashDealComponent } from './add-flash-deal/add-flash-deal.component
     NgbCarouselModule,
     HttpClientModule,
     NgbTimepickerModule,
-    NgSelectModule, 
-    HttpClientTestingModule,
-    RouterTestingModule
+    NgSelectModule
     // InMemoryWebApiModule.forRoot(InMemoryWycieczkiService, {delay : 2000}),
   ],
   providers: [FiltersProviderService, WycieczkiService, AuthService, {
