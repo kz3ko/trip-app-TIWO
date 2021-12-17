@@ -16,4 +16,3 @@ jobs:
           npm ci
           npm install
           npm run test:ci
-          npm run lint
