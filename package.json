@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon",
+    "start": "nodemon",
     "direct-dev": "ts-node app.ts",
     "build": "npm i && rm -rf ./build && tsc",
     "prod": "node ./build/index.js"
