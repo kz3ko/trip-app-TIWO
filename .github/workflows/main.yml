@@ -1,7 +1,7 @@
 name: Trip app
 on: push
 jobs:
-  build:
+  TestFrontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -10,7 +10,7 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: Test frontend
+      - name: Run tests
         run: |
           cd frontend
           npm ci

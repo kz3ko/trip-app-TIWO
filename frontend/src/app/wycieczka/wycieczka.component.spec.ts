@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WycieczkaComponent } from './wycieczka.component';
 
-xdescribe('WycieczkaComponent', () => {
+describe('WycieczkaComponent', () => {
   let component: WycieczkaComponent;
   let fixture: ComponentFixture<WycieczkaComponent>;
 
