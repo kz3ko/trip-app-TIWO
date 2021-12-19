@@ -19,7 +19,7 @@ export const mockWycieczki: Wycieczka[] = [
     zdjecie: 'photo.png',
     galeria: ['photo1.png', 'photo2.png'],
     rezerwowane: 1,
-    oceny: mockOceny,
+    oceny: [],
     deleted: false,
   }, {
     _id: '2',
@@ -33,7 +33,7 @@ export const mockWycieczki: Wycieczka[] = [
     zdjecie: 'photo.png',
     galeria: ['photo1.png', 'photo2.png'],
     rezerwowane: 1,
-    oceny: mockOceny,
+    oceny: [],
     deleted: false,
   }
 ];

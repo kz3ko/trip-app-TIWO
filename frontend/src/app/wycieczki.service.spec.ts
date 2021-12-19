@@ -2,7 +2,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import { TestBed } from '@angular/core/testing';
 
 import { WycieczkiService } from './wycieczki.service';
-import { mockWycieczki, mockRezerwacje, mockFlashDeals } from '../utils/tests-utils/mocks';
+import {mockWycieczki, mockRezerwacje, mockFlashDeals, mockOceny} from '../utils/tests-utils/mocks';
 import { Wycieczka } from './model/wycieczki';
 
 describe('WycieczkiServiceService', () => {
@@ -99,7 +99,7 @@ describe('WycieczkiServiceService', () => {
   xit('should delete wycieczka', () => {
     // FAILED
     cleanHttpRequests();
-    service.wycieczki = [...mockWycieczki];
+    service.wycieczki = mockWycieczki;
 
     const mockWycieczka = mockWycieczki[0];
     service.deleteWycieczka(mockWycieczka);
@@ -128,7 +128,7 @@ describe('WycieczkiServiceService', () => {
   });
 
   it('should get wycieczka while in cache', () => {
-    service.wycieczki = [...mockWycieczki];
+    service.wycieczki = mockWycieczki;
     const mockWycieczka = mockWycieczki[0];
     let returnedWycieczka = null;
 
@@ -171,7 +171,7 @@ describe('WycieczkiServiceService', () => {
   // });
 
   it('should can rate now', () => {
-    service.rezerwacje = [...mockRezerwacje];
+    service.rezerwacje = mockRezerwacje;
     const mockWycieczka = mockWycieczki[0];
     expect(service.canRateNow(mockWycieczka)).toBeTruthy();
 
@@ -179,38 +179,94 @@ describe('WycieczkiServiceService', () => {
     expect(service.canRateNow(mockWycieczka)).toBeFalsy();
   });
 
-  // it('should rate wycieczka', () => {
-  //   expect(true).toBeFalsy();
-  // });
-  //
-  // it('should book place', () => {
-  //   expect(true).toBeFalsy();
-  // });
-  //
-  // it('should unbook place', () => {
-  //   expect(true).toBeFalsy();
-  // });
-  //
-  // it('should update with wycieczka', () => {
-  //   expect(true).toBeFalsy();
-  // });
-  //
-  // it('should shift rezerwacje', () => {
-  //   expect(true).toBeFalsy();
-  // });
-  //
-  // it('should unshift rezerwacje', () => {
-  //   expect(true).toBeFalsy();
-  // });
+  it('should rate wycieczka', () => {
+    cleanHttpRequests();
+    service.wycieczki = mockWycieczki;
+    const mockWycieczka = mockWycieczki[0];
+    const mockOcena = mockOceny[0];
 
-  xit('should filter rezerwacje by wycieczka', () => {
-    // FAILED
-    service.rezerwacje = [...mockRezerwacje];
+    service.rateWycieczka(mockWycieczka, mockOcena);
+    const req = httpTestingController.expectOne(`/trips/${mockWycieczka._id}/review`);
+    expect(req.request.method).toBe('POST');
+    mockWycieczka.oceny = [mockOcena];
+    req.flush(mockWycieczka);
+
+    expect(service.wycieczki[0]).toEqual(mockWycieczka);
+
+    verifyHttpRequests();
+  });
+
+  it('should book place', () => {
+    cleanHttpRequests();
+    service.wycieczki = mockWycieczki;
+    const mockWycieczka = mockWycieczki[0];
+    const mockRezerwacja = mockRezerwacje[0];
+
+    service.bookPlace(mockWycieczka);
+    const req = httpTestingController.expectOne(`/trips/${mockWycieczka._id}/booking`);
+    expect(req.request.method).toBe('POST');
+    req.flush({reservation: mockRezerwacja, trip: mockWycieczka});
+
+    expect(service.rezerwacje).toContain(mockRezerwacja);
+    verifyHttpRequests();
+  });
+
+  it('should unbook place', () => {
+    cleanHttpRequests();
+    service.wycieczki = mockWycieczki;
+    service.rezerwacje = mockRezerwacje;
+    const mockWycieczka = mockWycieczki[0];
+    const mockRezerwacja = mockRezerwacje[0];
+
+    service.unBookPlace(mockWycieczka);
+    const req = httpTestingController.expectOne(`/trips/${mockWycieczka._id}/booking`);
+    expect(req.request.method).toBe('DELETE');
+    req.flush({mockRezerwacja, mockWycieczka});
+
+    expect(service.rezerwacje).toContain(mockRezerwacja);
+    verifyHttpRequests();
+  });
+
+  it('should update with wycieczka', () => {
+    const mockWycieczka = mockWycieczki[0];
+    service.wycieczki = [mockWycieczka];
+
+    mockWycieczka.cena = 569;
+    service.updateWithWycieczka(mockWycieczka);
+    expect(service.wycieczki[0]).toEqual(mockWycieczka);
+  });
+
+  it('should shift rezerwacje', () => {
+    const mockRezerwacja = mockRezerwacje[0];
+    service.rezerwacje = [mockRezerwacja];
+
+    mockRezerwacja.miejsca = 5;
+    service.shiftRezerwacja(mockRezerwacja);
+    expect(service.rezerwacje[0]).toEqual(mockRezerwacja);
+
+    const anotherMockRezerwacja = mockRezerwacje[1];
+    expect(service.rezerwacje).not.toContain(anotherMockRezerwacja);
+
+    service.shiftRezerwacja(anotherMockRezerwacja);
+    expect(service.rezerwacje).toContain(anotherMockRezerwacja);
+  });
+
+  it('should unshift rezerwacje', () => {
+    const mockRezerwacja = mockRezerwacje[0];
+    service.rezerwacje = [mockRezerwacja];
+
+    mockRezerwacja.miejsca = 2;
+    service.unshiftRezerwacja(mockRezerwacja);
+    expect(service.rezerwacje[0]).toEqual(mockRezerwacja);
+  });
+
+  it('should filter rezerwacje by wycieczka', () => {
+    service.rezerwacje = mockRezerwacje;
     const mockWycieczka = mockWycieczki[0];
     const mockRezerwacja = mockRezerwacje.find(({_id}) => _id === mockWycieczka._id);
     service.filterRezerwacjeByWycieczka(mockWycieczka);
 
-    expect(service.rezerwacje).toContain(mockRezerwacja);
+    expect(service.rezerwacje).not.toContain(mockRezerwacja);
   });
 });
 
