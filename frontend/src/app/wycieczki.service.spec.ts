@@ -221,7 +221,7 @@ describe('WycieczkiServiceService', () => {
     service.unBookPlace(mockWycieczka);
     const req = httpTestingController.expectOne(`/trips/${mockWycieczka._id}/booking`);
     expect(req.request.method).toBe('DELETE');
-    req.flush({mockRezerwacja, mockWycieczka});
+    req.flush({reservation: mockRezerwacja, trip: mockWycieczka});
 
     expect(service.rezerwacje).toContain(mockRezerwacja);
     verifyHttpRequests();
