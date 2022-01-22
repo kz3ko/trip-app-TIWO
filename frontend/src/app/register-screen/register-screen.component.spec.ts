@@ -25,4 +25,22 @@ describe('RegisterScreenComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have empty fields after being created', () => {
+    component.ngOnInit();
+
+    expect(component.username.value).toBe('');
+    expect(component.password.value).toBe('');
+  });
+
+  it('should get values from form', () => {
+    const username = 'Andrzej83';
+    const password = 'password';
+
+    component.form.controls.username.setValue(username);
+    component.form.controls.password.setValue(password);
+
+    expect(component.username.value).toBe(username);
+    expect(component.password.value).toBe(password);
+  });
 });
