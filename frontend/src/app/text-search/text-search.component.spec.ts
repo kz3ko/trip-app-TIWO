@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { TextSearchComponent } from './text-search.component';
 
@@ -8,9 +9,9 @@ describe('TextSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TextSearchComponent ]
+      declarations: [TextSearchComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +22,14 @@ describe('TextSearchComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit searchChange event after entering text in search textbox', () => {
+    let searchText: string;
+
+    component.searchChange.subscribe((value) => searchText = value);
+    fixture.debugElement.query(By.css('.form-control')).triggerEventHandler('ngModelChange', 'Albania');
+
+    expect(searchText).toBe('Albania');
   });
 });

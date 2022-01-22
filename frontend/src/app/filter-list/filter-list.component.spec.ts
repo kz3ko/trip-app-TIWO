@@ -24,4 +24,18 @@ describe('FilterListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should react on search change if value provided', () => {
+    component.filtersEnabled.search = false;
+    component.onSearchChange('Some string');
+
+    expect(component.filtersEnabled.search).toBeTruthy();
+  });
+
+  it('should react on search change if value not provided', () => {
+    component.filtersEnabled.search = true;
+    component.onSearchChange(null);
+
+    expect(component.filtersEnabled.search).toBeFalsy();
+  });
 });

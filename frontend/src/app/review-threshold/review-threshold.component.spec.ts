@@ -22,4 +22,14 @@ describe('ReviewThresholdComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should handle value change', () => {
+    const gwiazdki = 5;
+    component.gwiazdki = 5;
+
+    spyOn(component.reviewRatingChange, 'emit');
+    component.handleValueChange();
+
+    expect(component.reviewRatingChange.emit).toHaveBeenCalledWith(gwiazdki);
+  })
 });
