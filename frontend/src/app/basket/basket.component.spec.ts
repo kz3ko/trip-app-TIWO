@@ -24,4 +24,11 @@ describe('BasketComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toggle basket', () => {
+    spyOn(component, 'bodyScrollUpdate').and.callThrough();
+    const previousBasketClosedState = component.basketClosed;
+    component.toggleBasket();
+    expect(previousBasketClosedState).toEqual(!component.basketClosed);
+  });
 });

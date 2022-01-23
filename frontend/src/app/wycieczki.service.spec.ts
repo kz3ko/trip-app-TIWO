@@ -28,13 +28,36 @@ describe('WycieczkiServiceService', () => {
     expect(service).toBeTruthy();
   });
 
-  // it('should updated filtered wycieczki', () => {
-  //   expect(true).toBeFalsy();
-  // });
-  //
-  // it('should updated apply filters', () => {
-  //   expect(true).toBeFalsy();
-  // });
+  it('should check if flash deal is current and matches when wycieczka is valid ' +
+    'and flashdeal current', () => {
+    const mockValidWycieczka = mockWycieczki[0];
+    const mockFlashDeal = {...mockFlashDeals[0]};
+    const startsAt = new Date();
+    const expiresAt = new Date();
+    startsAt.setDate(startsAt.getDate() - 3);
+    expiresAt.setDate(expiresAt.getDate() + 3);
+    mockFlashDeal.starts_at = startsAt;
+    mockFlashDeal.expires_at = expiresAt;
+    // @ts-ignore
+    expect(service.isFlashDealCurrentAndMatches(mockValidWycieczka, mockFlashDeal)).toBeTruthy();
+  });
+
+  it('should check if flash deal is current and matches when wycieczka is valid ' +
+    'and flashdeal is not current', () => {
+    const mockValidWycieczka = mockWycieczki[0];
+    const mockFlashDeal = {...mockFlashDeals[0]};
+    // @ts-ignore
+    expect(service.isFlashDealCurrentAndMatches(mockValidWycieczka, mockFlashDeal)).toBeFalsy();
+  });
+
+  it('should check if flash deal is current and matches when wycieczka is invalid ' +
+    'and flashdeal is not current', () => {
+    const mockValidWycieczka = mockWycieczki[0];
+    const mockFlashDeal = {...mockFlashDeals[0]};
+    mockFlashDeal.wycieczka_id = '123';
+    // @ts-ignore
+    expect(service.isFlashDealCurrentAndMatches(mockValidWycieczka, mockFlashDeal)).toBeFalsy();
+  });
 
   it('should fetch wycieczki', () => {
     cleanHttpRequests();
@@ -159,17 +182,6 @@ describe('WycieczkiServiceService', () => {
     verifyHttpRequests();
   });
 
-  // it('should can rate wycieczka', (done) => {
-  //   service.rezerwacje = [...mockRezerwacje];
-  //   const mockWycieczka = mockWycieczki[0];
-  //   console.log('=====================================')
-  //   service.canRateWycieczka(mockWycieczka).subscribe((canRate) => {
-  //     console.log(canRate);
-  //     done();
-  //   });
-  //   done.fail();
-  // });
-
   it('should can rate now', () => {
     service.rezerwacje = mockRezerwacje;
     const mockWycieczka = mockWycieczki[0];
@@ -211,7 +223,7 @@ describe('WycieczkiServiceService', () => {
     verifyHttpRequests();
   });
 
-  it('should unbook place', () => {
+  it('should unbook place when response is valid', () => {
     cleanHttpRequests();
     service.wycieczki = mockWycieczki;
     service.rezerwacje = mockRezerwacje;
@@ -224,6 +236,22 @@ describe('WycieczkiServiceService', () => {
     req.flush({reservation: mockRezerwacja, trip: mockWycieczka});
 
     expect(service.rezerwacje).toContain(mockRezerwacja);
+    verifyHttpRequests();
+  });
+
+  it('should unbook place when response is invalid', () => {
+    cleanHttpRequests();
+    service.wycieczki = mockWycieczki;
+    service.rezerwacje = mockRezerwacje;
+    const mockWycieczka = mockWycieczki[0];
+    const mockRezerwacja = mockRezerwacje[0];
+
+    service.unBookPlace(mockWycieczka);
+    const req = httpTestingController.expectOne(`/trips/${mockWycieczka._id}/booking`);
+    expect(req.request.method).toBe('DELETE');
+    req.flush(null);
+
+    expect(service.rezerwacje).not.toContain(mockRezerwacja);
     verifyHttpRequests();
   });
 

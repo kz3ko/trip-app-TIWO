@@ -50,10 +50,6 @@ describe('FilterListComponent', () => {
     }
   });
 
-  it('should push new filters', () => {
-    component.pushNewFilters();
-  });
-
   it('should return max trip value', () => {
     const value = 50;
 
@@ -77,9 +73,11 @@ describe('FilterListComponent', () => {
       {from: new NgbDate(2022, 4, 10), to: null},
       {from: null, to: null}
     ];
+    spyOn(component, 'swapFilter').and.callThrough();
     for (const dateRange of invalidDateRanges) {
-      expect(component.onDateRangeChange(dateRange)).toBeUndefined();
+      component.onDateRangeChange(dateRange);
     }
+    expect(component.swapFilter).toHaveBeenCalledTimes(0);
   });
 
   it('should react if date range change if date range is valid', () => {
@@ -87,7 +85,9 @@ describe('FilterListComponent', () => {
       from: new NgbDate(2022, 4, 3),
       to: new NgbDate(2022, 4, 10)
     };
-    spyOn(component, 'pushNewFilters').and.callThrough();
+    spyOn(component, 'swapFilter').and.callThrough();
+    component.onDateRangeChange(validDateRange);
+    expect(component.swapFilter).toHaveBeenCalled();
   });
 
   it('should react on search change if value provided', () => {
@@ -105,6 +105,8 @@ describe('FilterListComponent', () => {
   });
 
   it('should react on review threshold change', () => {
-    expect(component.onReviewThresholdChange(1)).toBeUndefined();
+    spyOn(component, 'swapFilter').and.callThrough();
+    component.onReviewThresholdChange(1);
+    expect(component.swapFilter).toHaveBeenCalled();
   });
 });

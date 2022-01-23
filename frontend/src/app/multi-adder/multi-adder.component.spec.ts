@@ -9,7 +9,7 @@ describe('MultiAdderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MultiAdderComponent ], 
+      declarations: [ MultiAdderComponent ],
       imports: [ FormsModule, ReactiveFormsModule ]
     })
     .compileComponents();

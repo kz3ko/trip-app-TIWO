@@ -7,6 +7,12 @@ describe('AddWycieczkaComponent', () => {
   let component: AddWycieczkaComponent;
   let fixture: ComponentFixture<AddWycieczkaComponent>;
 
+  const createModal = () => {
+    spyOn(component, 'open').and.callThrough();
+    const button = fixture.nativeElement.querySelector('button');
+    button.click();
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AddWycieczkaComponent ],
@@ -67,6 +73,33 @@ describe('AddWycieczkaComponent', () => {
     expect(component.zdjecie.value).toBe(zdjecie);
   });
 
+  it('should add wycieczka', () => {
+    spyOn(component, 'touchAll').and.callThrough();
+    component.addWycieczka();
+    expect(component.touchAll).toHaveBeenCalled();
+
+    const nazwa = 'Wakacje w grecji!';
+    const docelowyKraj = 'Grecja';
+    const dataZakonczenia = '08.08.2022';
+    const dataRozpoczecia = '27.07.2022';
+    const cena = 2999;
+    const maxMiejsc = 5;
+    const opis = 'Super wakacje!';
+    const zdjecie = '*przykladowe zdjecie*';
+
+    component.form.controls.nazwa.setValue(nazwa);
+    component.form.controls.docelowyKraj.setValue(docelowyKraj);
+    component.form.controls.dataZakonczenia.setValue(dataZakonczenia);
+    component.form.controls.dataRozpoczecia.setValue(dataRozpoczecia);
+    component.form.controls.cena.setValue(cena);
+    component.form.controls.maxMiejsc.setValue(maxMiejsc);
+    component.form.controls.opis.setValue(opis);
+    component.form.controls.zdjecie.setValue(zdjecie);
+
+    createModal();
+    component.addWycieczka();
+  });
+
   it('should reset form', () => {
     const nazwa = 'Wakacje w grecji!';
     component.form.controls.nazwa.setValue(nazwa);
@@ -76,4 +109,21 @@ describe('AddWycieczkaComponent', () => {
     expect(component.nazwa.value).toBe(null);
   });
 
+  it('should open content when clicked', () => {
+    createModal();
+    expect(component.open).toHaveBeenCalled();
+  });
+
+  it('should close modal', () => {
+    createModal();
+    spyOn(component, 'resetForm').and.callThrough();
+    component.modalClose();
+    expect(component.resetForm).toHaveBeenCalled();
+  });
+
+  it('should handle new gallery', () => {
+    const newGallery = ['photo1', 'photo2', 'photo3'];
+    component.handleNewGallery(newGallery);
+    expect(component.gallery).toEqual(newGallery);
+  });
 });

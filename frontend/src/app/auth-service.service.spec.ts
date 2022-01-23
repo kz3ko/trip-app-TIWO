@@ -2,8 +2,6 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import { TestBed } from '@angular/core/testing';
 
 import { AuthService, Credentials } from './auth-service.service';
-import firebase from "firebase";
-import Auth = firebase.auth.Auth;
 
 describe('AuthServiceService', () => {
   let service: AuthService;
@@ -26,15 +24,6 @@ describe('AuthServiceService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should register', () => {
-    service.register(credentials).subscribe((value => {
-      expect(value).toBe(credentials);
-    }));
-    const req = httpTestingController.expectOne('/accounts/register');
-    expect(req.request.method).toBe('POST');
-    verifyHttpRequests();
-  });
-
   it('should allow to get access level', () => {
     expect(AuthService.getAccessLevel()).toEqual(['regular']);
 
@@ -50,16 +39,12 @@ describe('AuthServiceService', () => {
     expect(AuthService.getApiToken()).toEqual(exampleToken);
   });
 
-  // it('should set cookie', () => {
-  //   const name = 'someToken';
-  //   const value = 'someValue';
-  //   const expireDays = 23;
-  //   const path = 'somePath';
-  //
-  //   AuthService.setCookie(name, value, expireDays, path);
-  //
-  //   expect(document.cookie).toEqual('test');
-  // });
+  it('should return cookie', () => {
+    AuthService.setCookie('validCookieName', 'exampleCookieValue', 120);
+
+    expect(AuthService.getCookie('invalidCookieName')).toEqual('');
+    expect(AuthService.getCookie('validCookieName')).toEqual('exampleCookieValue');
+  });
 
   it('should allow to get logged in when user gets token', () => {
     spyOn(AuthService, 'getApiToken').and.returnValue('someToken');
@@ -70,4 +55,34 @@ describe('AuthServiceService', () => {
     spyOn(AuthService, 'getApiToken').and.returnValue('');
     expect(service.getLoggedIn()).toBeFalsy();
   });
+
+  it('should login', () => {
+    service.login(credentials).subscribe((value => {
+      expect(value).toBe(credentials);
+    }));
+    const req = httpTestingController.expectOne('/accounts/login');
+    expect(req.request.method).toBe('POST');
+    verifyHttpRequests();
+  });
+
+  it('should register', () => {
+    service.register(credentials).subscribe((value => {
+      expect(value).toBe(credentials);
+    }));
+    const req = httpTestingController.expectOne('/accounts/register');
+    expect(req.request.method).toBe('POST');
+    verifyHttpRequests();
+  });
+
+
+  it('should logout correctly', () => {
+    AuthService.setCookie('authToken', 'value', 123);
+    AuthService.setCookie('adminAccess', 'value', 123);
+    service.logout();
+
+    expect(AuthService.getCookie('authToken')).toEqual('');
+    expect(AuthService.getCookie('adminAccess')).toEqual('');
+    expect(service.accessLevel).toEqual(['regular']);
+    expect(service.loggedIn).toBeFalsy();
+  })
 });

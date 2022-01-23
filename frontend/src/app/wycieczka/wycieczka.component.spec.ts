@@ -1,5 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import { WycieczkaComponent } from './wycieczka.component';
 import { mockWycieczki  } from '../../utils/tests-utils/mocks';
@@ -75,6 +75,6 @@ describe('WycieczkaComponent', () => {
     component.wycieczka = wycieczka;
     spyOn(component.editWycieczka, 'emit');
     component.onEditWycieczka();
-    expect(component.editWycieczka.emit).not.toHaveBeenCalledWith(wycieczka);
+    expect(component.editWycieczka.emit).toHaveBeenCalledWith(wycieczka);
   });
 });
