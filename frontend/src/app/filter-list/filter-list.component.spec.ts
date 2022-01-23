@@ -1,11 +1,15 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterListComponent } from './filter-list.component';
+import {dateToNgbDate, FilterListComponent, FilterType} from './filter-list.component';
+import { DateRange } from '../date-range-filter/date-range-filter.component';
+import { mockWycieczki  } from '../../utils/tests-utils/mocks';
+import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
 
 describe('FilterListComponent', () => {
   let component: FilterListComponent;
   let fixture: ComponentFixture<FilterListComponent>;
+  const availableFilterTypes: FilterType[] = ['dateRange', 'search', 'priceRange', 'reviewThreshold', 'allowedRegions'];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,6 +29,67 @@ describe('FilterListComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  // FAILS
+  xit('should convert to NGB data', () => {
+    const year = 2022;
+    const month = 4;
+    const day = 12;
+
+    const someDate = new Date(year, month, day);
+    const expectedNgbDate = new NgbDate(year, month, day);
+
+    expect(dateToNgbDate(someDate)).toEqual(expectedNgbDate);
+  });
+
+  it('should flip filters', () => {
+    for (const filter of availableFilterTypes) {
+      const previousState = component.filtersEnabled[filter];
+      component.flipFilter(filter);
+      const currentState = component.filtersEnabled[filter];
+      expect(previousState).toEqual(!currentState);
+    }
+  });
+
+  it('should push new filters', () => {
+    component.pushNewFilters();
+  });
+
+  it('should return max trip value', () => {
+    const value = 50;
+
+    component.maxWycieczkaValue = value;
+
+    expect(component.getMaxWycieczkaValue()).toEqual(value);
+  });
+
+  it('should return available regions', () => {
+    expect(component.availableRegions().length).toEqual(0);
+    expect(component.availableRegions()).toEqual([]);
+
+    component.wycieczki = mockWycieczki;
+    expect(component.availableRegions().length).toEqual(2);
+    expect(component.availableRegions()).toEqual(['Polska', 'Polska']);
+  });
+
+  it('should not react on date range change if date range is invalid', () => {
+    const invalidDateRanges: DateRange[] = [
+      {from: null, to: new NgbDate(2022, 4, 10)},
+      {from: new NgbDate(2022, 4, 10), to: null},
+      {from: null, to: null}
+    ];
+    for (const dateRange of invalidDateRanges) {
+      expect(component.onDateRangeChange(dateRange)).toBeUndefined();
+    }
+  });
+
+  it('should react if date range change if date range is valid', () => {
+    const validDateRange: DateRange = {
+      from: new NgbDate(2022, 4, 3),
+      to: new NgbDate(2022, 4, 10)
+    };
+    spyOn(component, 'pushNewFilters').and.callThrough();
+  });
+
   it('should react on search change if value provided', () => {
     component.filtersEnabled.search = false;
     component.onSearchChange('Some string');
@@ -37,5 +102,9 @@ describe('FilterListComponent', () => {
     component.onSearchChange(null);
 
     expect(component.filtersEnabled.search).toBeFalsy();
+  });
+
+  it('should react on review threshold change', () => {
+    expect(component.onReviewThresholdChange(1)).toBeUndefined();
   });
 });

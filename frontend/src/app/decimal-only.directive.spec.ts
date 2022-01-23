@@ -6,8 +6,13 @@ class MockElementRef implements ElementRef {
 }
 
 describe('DecimalOnlyDirective', () => {
+  let directive: DecimalOnlyDirective;
+
+  beforeEach(() => {
+    directive = new DecimalOnlyDirective(new MockElementRef());
+  });
+
   it('should create an instance', () => {
-    const directive = new DecimalOnlyDirective(new MockElementRef());
     expect(directive).toBeTruthy();
   });
 });

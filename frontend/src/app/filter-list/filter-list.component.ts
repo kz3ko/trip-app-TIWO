@@ -10,7 +10,7 @@ export const dateToNgbDate = (date: Date) => NgbDate.from({ day: new Date(date).
 
 export type WycieczkaTestFunction = (wycieczka: Wycieczka) => boolean;
 
-type FilterType = 'dateRange' | 'search' | 'priceRange' | 'reviewThreshold' | 'allowedRegions';
+export type FilterType = 'dateRange' | 'search' | 'priceRange' | 'reviewThreshold' | 'allowedRegions';
 
 const meanWycieczkaRating = (wycieczka: Wycieczka): number | null => (wycieczka.oceny.length ? wycieczka.oceny.reduce((acc, { gwiazdki }) => acc + gwiazdki, 0) / (wycieczka.oceny.length + 1) : null);
 
