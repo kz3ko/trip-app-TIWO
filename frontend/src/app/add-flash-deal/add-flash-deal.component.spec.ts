@@ -3,16 +3,27 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import { AddFlashDealComponent } from './add-flash-deal.component';
+import {WycieczkiService} from '../wycieczki.service';
+import {mockWycieczki} from '../../utils/tests-utils/mocks';
+import {Subject} from 'rxjs';
+import {Wycieczka} from '../model/wycieczki';
 
+class WycieczkiServiceStub {
+    wycieczki: Wycieczka[] = {...mockWycieczki};
+    wycieczkiSource = new Subject<Wycieczka[]>();
+    wycieczkiStream$ = this.wycieczkiSource.asObservable();
+}
 
 describe('AddFlashDealComponent', () => {
   let component: AddFlashDealComponent;
   let fixture: ComponentFixture<AddFlashDealComponent>;
+  let wycieczkiServiceStub: Partial<WycieczkiService>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AddFlashDealComponent ],
       imports: [ HttpClientTestingModule ],
+      providers: [ { provide: WycieczkiService, useValue: new WycieczkiServiceStub() }]
     })
     .compileComponents();
   });
@@ -20,6 +31,7 @@ describe('AddFlashDealComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddFlashDealComponent);
     component = fixture.componentInstance;
+    wycieczkiServiceStub = TestBed.inject(WycieczkiService);
     fixture.detectChanges();
   });
 
@@ -44,5 +56,11 @@ describe('AddFlashDealComponent', () => {
     const outputDate = component.setTime(testDate, timeStruct);
 
     expect(outputDate).toEqual(expectedDate);
+  });
+
+  // INTEGRATION TESTS
+  it('should get new wycieczki from wycieczkiService', () => {
+    component.initTimes();
+    expect(component.availableWycieczkas).toEqual(wycieczkiServiceStub.wycieczki);
   });
 });
