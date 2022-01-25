@@ -119,7 +119,7 @@ describe('WycieczkiServiceService', () => {
     verifyHttpRequests();
   });
 
-  xit('should delete wycieczka', () => {
+  it('should delete wycieczka', () => {
     // FAILED
     cleanHttpRequests();
     service.wycieczki = mockWycieczki;

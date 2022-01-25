@@ -30,7 +30,7 @@ describe('FilterListComponent', () => {
   });
 
   // FAILS
-  xit('should convert to NGB data', () => {
+  it('should convert to NGB data', () => {
     const year = 2022;
     const month = 4;
     const day = 12;
