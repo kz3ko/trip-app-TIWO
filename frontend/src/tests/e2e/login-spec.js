@@ -43,7 +43,9 @@ describe('login functionality tests', () => {
         userNameForm.sendKeys(testUserMail);
         passwordForm.sendKeys(testPassword);
         loginButton.click();
-        expect(element.all(by.css('.text-danger')).getText()).toContain('Błąd logowania: Wrong username or password.');
+        expect(element.all(by.css('.text-danger')).getText()).toContain(
+          'Błąd logowania: Wrong username or password.'
+        );
     });
     
     it('should return certain alert if user submits uncompleted form', () => {
@@ -57,7 +59,9 @@ describe('login functionality tests', () => {
 
         usernameTextBox.sendKeys(testUserMail);
         loginButton.click();
-        expect(element.all(by.css('.text-danger')).getText()).toContain('This field is required');
+        expect(element.all(by.css('.text-danger')).getText()).toContain(
+          'This field is required'
+        );
     });
 
     it('should logout logged in user', () => {
