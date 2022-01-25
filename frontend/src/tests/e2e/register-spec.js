@@ -27,8 +27,6 @@ describe('register functionality tests', () => {
         browser.sleep(2000)
 
         expect(element(by.linkText('Wycieczki')).isPresent()).toBeTruthy();
-        expect(element(by.linkText('Rejestracja')).isPresent()).toBeTruthy();
-        expect(element(by.linkText('Logowanie')).isPresent()).toBeTruthy();
     });
 
     it('should return certain alert if user with given email exists', () => {
